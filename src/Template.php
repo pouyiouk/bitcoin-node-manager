@@ -18,8 +18,12 @@ class Template {
 			//Starts output buffering
 			ob_start();
 			//Includes contents
-			include 'views/header.phtml';
-			include $this->sectionPath;
+      include 'views/header.phtml';
+      if(!empty($error)){  
+      echo '<div class="alert alert-danger col-md-3 col-sm-6 col-xs-12" role="alert">'.$error.'</div>'; 
+      } else {
+        include $this->sectionPath;
+      }
 			$buffer = ob_get_contents();
 			@ob_end_clean();
 			//Returns output buffer
